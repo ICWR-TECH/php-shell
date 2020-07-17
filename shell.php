@@ -44,7 +44,7 @@ class shell
 
         if ($cmd == "cd") {
 
-            $_SESSION['directory'] = getcwd();
+            $_SESSION['directory'] = str_replace($_SERVER['PHP_SELF'], "", $_SERVER['SCRIPT_FILENAME']);
 
         } elseif ($check[0] == "cd") {
 
