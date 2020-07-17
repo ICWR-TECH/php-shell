@@ -9,6 +9,7 @@ class shell
     public function change_dir($cmd)
     {
 
+        chdir(str_replace($_SERVER['PHP_SELF'], "", $_SERVER['SCRIPT_FILENAME']));
         $path = explode(" ", $cmd);
 
         if ($path[0] == "cd") {
@@ -41,7 +42,11 @@ class shell
 
         $check = explode(" ", $cmd);
 
-        if ($check[0] == "cd") {
+        if ($cmd == "cd") {
+
+            $_SESSION['directory'] = getcwd();
+
+        } elseif ($check[0] == "cd") {
 
             shell::change_dir($cmd);
 
