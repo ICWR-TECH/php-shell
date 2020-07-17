@@ -48,7 +48,7 @@ class shell
 
         } elseif ($check[0] == "cd") {
 
-            shell::change_dir($cmd);
+            shell::change_dir(str_replace(".", "", $cmd));
 
         } elseif ($result = shell_exec($cmd)) {
 
